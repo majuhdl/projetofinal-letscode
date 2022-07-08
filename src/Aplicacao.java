@@ -12,9 +12,22 @@ public class Aplicacao {
 		cliente2.setNome("Super Pizzaria");
 		cliente2.setCnpj("45678912311");
 		
-		ContaCorrente conta1 = new ContaCorrente();
-		conta1.setSaldo(0);
-		conta1.setDonoConta(cliente1);
+		ContaCorrente conta1 = new ContaCorrente(0, cliente1);
+		System.out.println("Saldo:"+conta1.getSaldo()+"\nNome cliente:"+conta1.getDonoConta().getNome());
+
+		ContaCorrente conta2 = new ContaCorrente(0, cliente2);
+		System.out.println("Saldo:"+conta2.getSaldo()+"\nNome cliente:"+conta2.getDonoConta().getNome());
+
+		//ContaInvestimento conta10 = new ContaPoupanca(0, cliente2);
+
+		ContaPoupanca conta3 = new ContaPoupanca(0, cliente1);
+		System.out.println("Saldo:"+conta3.getSaldo()+"\nNome cliente:"+conta3.getDonoConta().getNome());
+
+		ContaInvestimento conta4 = new ContaInvestimento(0, cliente1);
+		System.out.println("Saldo:"+conta4.getSaldo()+"\nNome cliente:"+conta4.getDonoConta().getNome());
+
+		ContaInvestimento conta5 = new ContaInvestimento(0, cliente2);
+		System.out.println("Saldo:"+conta5.getSaldo()+"\nNome cliente:"+conta5.getDonoConta().getNome());
 	}
 
 }
