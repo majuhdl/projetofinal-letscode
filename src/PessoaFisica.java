@@ -9,4 +9,8 @@ public class PessoaFisica extends Cliente{
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	
+	//abrir conta corrente
+	//abrir conta investimento
+	//abrir conta poupança
 }
