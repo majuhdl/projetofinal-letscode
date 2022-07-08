@@ -1,5 +1,8 @@
-
 public class ContaPoupanca extends Conta implements Rentavel {
+
+	public ContaPoupanca(double saldo, PessoaFisica donoConta) {
+		super(saldo, donoConta);
+	}
 
 	@Override
 	public void renderConta() {
