@@ -1,5 +1,8 @@
-
 public class ContaInvestimento extends Conta implements Rentavel {
+
+	public ContaInvestimento(double saldo, Cliente donoConta) {
+		super(saldo, donoConta);
+	}
 
 	public void renderConta() {
 
