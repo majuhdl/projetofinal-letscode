@@ -1,8 +1,12 @@
-
 public abstract class Conta {
 	private double saldo;
 	private Cliente donoConta;
 	
+	public Conta(double saldo, Cliente donoConta) {
+		this.saldo = saldo;
+		this.donoConta = donoConta;
+	}
+
 	public double getSaldo() {
 		return saldo;
 	}
