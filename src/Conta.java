@@ -1,27 +1,43 @@
 public abstract class Conta {
 	private double saldo;
 	private Cliente donoConta;
-	
+
 	public Conta(double saldo, Cliente donoConta) {
 		this.saldo = saldo;
 		this.donoConta = donoConta;
 	}
 
-	public double getSaldo() {
+	public double getSaldo() { // FUNCIONALIDADE CONSULTAR SALDO
 		return saldo;
 	}
 
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
-	
+
 	public void setDonoConta(Cliente cliente) {
 		this.donoConta = cliente;
 	}
-	
-	public Cliente getDonoConta () {
+
+	public Cliente getDonoConta() {
 		return this.donoConta;
 	}
 
+	public void depositarValor(double deposito) {
+		if (deposito < 0) {
+			throw new ArithmeticException("Operação inválida - não é possível depositar valor negativo");
+		}
+		this.setSaldo(this.getSaldo() + deposito);
+	}
+
+	public void sacarValor(double saque) {
+		if (saque < 0) {
+			throw new ArithmeticException("Operação inválida - não é possível sacar valor negativo");
+		}
+		if (saque > this.getSaldo()) {
+			throw new ArithmeticException("Operação inválida - saldo insuficiente para o saque solicitado");
+		}
+		this.setSaldo(this.getSaldo() - saque);
+	}
 
 }
