@@ -34,7 +34,7 @@ public abstract class Conta {
 	public void sacarValor(double saque) {
 		boolean isPessoaJuridica = getDonoConta() instanceof PessoaJuridica;
 		if (isPessoaJuridica == true){
-			saque = (saque*0.995);
+			saque = Math.round(saque*1.005);
 		}
 		if (saque < 0) {
 			throw new ArithmeticException("Operacao invalida - nao eh possivel sacar valor negativo");
@@ -46,9 +46,12 @@ public abstract class Conta {
 	}
 
 	public void transferir(Conta contaDestino, double valorTransferencia) {
+		double valorComDesconto = 0;
 		boolean isPessoaJuridica = getDonoConta() instanceof PessoaJuridica;
 		if (isPessoaJuridica == true){
-			valorTransferencia = (valorTransferencia*0.995);
+			valorComDesconto = (valorTransferencia*0.995);
+		} else {
+			valorComDesconto = valorTransferencia;
 		}
 		if (valorTransferencia < 0) {
 			throw new ArithmeticException("Operacao invalida - nao eh possivel transferir valor negativo");
@@ -57,11 +60,11 @@ public abstract class Conta {
 			throw new ArithmeticException("Operacao invalida - saldo insuficiente para a transferencia solicitada");
 		}
 
-		// this.setSaldo(this.getSaldo()-valorTransferencia);
-		// contaDestino.setSaldo(contaDestino.getSaldo()+valorTransferencia);
+		//this.setSaldo(this.getSaldo()-valorTransferencia);
+		//contaDestino.setSaldo(contaDestino.getSaldo()+valorTransferencia);
 
 		this.sacarValor(valorTransferencia);
-		contaDestino.depositarValor(valorTransferencia);
+		contaDestino.depositarValor(valorComDesconto);
 	}
 
 }
