@@ -32,6 +32,9 @@ public class Aplicacao {
 
 		ContaInvestimento conta5 = new ContaInvestimento(0, cliente2);
 		System.out.println("Saldo:"+conta5.getSaldo()+"\nNome cliente:"+conta5.getDonoConta().getNome());
+		
+		conta3.renderConta();
+		System.out.println("Saldo:"+conta3.getSaldo()+"\nNome cliente:"+conta3.getDonoConta().getNome());
 	}
 
 }
