@@ -25,7 +25,7 @@ public abstract class Conta {
 
 	public void depositarValor(double deposito) {
 		if (deposito < 0) {
-			throw new ArithmeticException("Operação inválida - não é possível depositar valor negativo");
+			throw new ArithmeticException("Operaï¿½ï¿½o invï¿½lida - nï¿½o ï¿½ possï¿½vel depositar valor negativo");
 		}
 		this.setSaldo(this.getSaldo() + deposito);
 	}
@@ -33,23 +33,27 @@ public abstract class Conta {
 	
 	public void sacarValor(double saque) {
 		if (saque < 0) {
-			throw new ArithmeticException("Operação inválida - não é possível sacar valor negativo");
+			throw new ArithmeticException("Operaï¿½ï¿½o invï¿½lida - nï¿½o ï¿½ possï¿½vel sacar valor negativo");
 		}
 		if (saque > this.getSaldo()) {
-			throw new ArithmeticException("Operação inválida - saldo insuficiente para o saque solicitado");
+			throw new ArithmeticException("Operaï¿½ï¿½o invï¿½lida - saldo insuficiente para o saque solicitado");
 		}
 		this.setSaldo(this.getSaldo() - saque);
 	}
 
 	public void transferir(Conta contaDestino, double valorTransferencia) {
 		if (valorTransferencia < 0) {
-			throw new ArithmeticException("Operação inválida - não é possível transferir valor negativo");
+			throw new ArithmeticException("Operaï¿½ï¿½o invï¿½lida - nï¿½o ï¿½ possï¿½vel transferir valor negativo");
 		}
 		if (valorTransferencia > this.getSaldo()) {
-			throw new ArithmeticException("Operação inválida - saldo insuficiente para a transferência solicitada");
+			throw new ArithmeticException("Operaï¿½ï¿½o invï¿½lida - saldo insuficiente para a transferï¿½ncia solicitada");
 		}
-		this.setSaldo(this.getSaldo()-valorTransferencia);
-		contaDestino.setSaldo(contaDestino.getSaldo()+valorTransferencia);
+
+		// this.setSaldo(this.getSaldo()-valorTransferencia);
+		// contaDestino.setSaldo(contaDestino.getSaldo()+valorTransferencia);
+
+		this.sacarValor(valorTransferencia);
+		contaDestino.depositarValor(valorTransferencia);
 	}
 
 }
