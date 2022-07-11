@@ -13,10 +13,21 @@ public class Aplicacao {
 		cliente2.setCnpj("45678912311");
 		
 		ContaCorrente conta1 = new ContaCorrente(0, cliente1);
-		System.out.println("Saldo:"+conta1.getSaldo()+"\nNome cliente:"+conta1.getDonoConta().getNome());
+		System.out.println("Saldo de conta PF:"+conta1.getSaldo()+"\nNome cliente:"+conta1.getDonoConta().getNome());
+		conta1.depositarValor(100);
+		System.out.println("Saldo pos deposito de 100:"+conta1.getSaldo()+"\nNome cliente:"+conta1.getDonoConta().getNome());
+		conta1.sacarValor(100);
+		System.out.println("Saldo pos saque de 100:"+conta1.getSaldo()+"\nNome cliente:"+conta1.getDonoConta().getNome()+"\n");
 
 		ContaCorrente conta2 = new ContaCorrente(0, cliente2);
-		System.out.println("Saldo:"+conta2.getSaldo()+"\nNome cliente:"+conta2.getDonoConta().getNome());
+		System.out.println("Saldo de conta PJ:"+conta2.getSaldo()+"\nNome cliente:"+conta2.getDonoConta().getNome());
+		conta2.depositarValor(100);
+		System.out.println("Saldo apos deposito de 100:"+conta2.getSaldo()+"\nNome cliente:"+conta2.getDonoConta().getNome());
+		conta2.sacarValor(10);
+		System.out.println("Saldo após saque de 10:"+conta2.getSaldo()+"\nNome cliente:"+conta2.getDonoConta().getNome());
+		conta2.transferir(conta1, 10);
+		System.out.println("Saldo Conta 1 apos transferencia de 10:"+conta1.getSaldo()+"\nNome cliente:"+conta1.getDonoConta().getNome());
+		System.out.println("Saldo Conta 2apos tranferencia de 10:"+conta2.getSaldo()+"\nNome cliente:"+conta2.getDonoConta().getNome()+"\n");
 
 		//ContaInvestimento conta10 = new ContaPoupanca(0, cliente2);
 		
