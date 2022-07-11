@@ -19,8 +19,10 @@ public class Aplicacao {
 		System.out.println("Saldo:"+conta2.getSaldo()+"\nNome cliente:"+conta2.getDonoConta().getNome());
 
 		//ContaInvestimento conta10 = new ContaPoupanca(0, cliente2);
-
+		
 		ContaPoupanca conta3 = new ContaPoupanca(0, cliente1);
+		conta3.depositarValor(550);
+		conta3.sacarValor(220);
 		System.out.println("Saldo:"+conta3.getSaldo()+"\nNome cliente:"+conta3.getDonoConta().getNome());
 
 		ContaInvestimento conta4 = new ContaInvestimento(0, cliente1);
