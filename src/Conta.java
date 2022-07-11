@@ -25,35 +25,46 @@ public abstract class Conta {
 
 	public void depositarValor(double deposito) {
 		if (deposito < 0) {
-			throw new ArithmeticException("Opera��o inv�lida - n�o � poss�vel depositar valor negativo");
+			throw new ArithmeticException("Operacao invalida - nao eh possivel depositar valor negativo");
 		}
 		this.setSaldo(this.getSaldo() + deposito);
 	}
 
 	
 	public void sacarValor(double saque) {
+		boolean isPessoaJuridica = getDonoConta() instanceof PessoaJuridica;
+		if (isPessoaJuridica == true){
+			saque = Math.round(saque*1.005);
+		}
 		if (saque < 0) {
-			throw new ArithmeticException("Opera��o inv�lida - n�o � poss�vel sacar valor negativo");
+			throw new ArithmeticException("Operacao invalida - nao eh possivel sacar valor negativo");
 		}
 		if (saque > this.getSaldo()) {
-			throw new ArithmeticException("Opera��o inv�lida - saldo insuficiente para o saque solicitado");
+			throw new ArithmeticException("Operacao invalida - saldo insuficiente para o saque solicitado");
 		}
 		this.setSaldo(this.getSaldo() - saque);
 	}
 
 	public void transferir(Conta contaDestino, double valorTransferencia) {
+		double valorComDesconto = 0;
+		boolean isPessoaJuridica = getDonoConta() instanceof PessoaJuridica;
+		if (isPessoaJuridica == true){
+			valorComDesconto = (valorTransferencia*0.995);
+		} else {
+			valorComDesconto = valorTransferencia;
+		}
 		if (valorTransferencia < 0) {
-			throw new ArithmeticException("Opera��o inv�lida - n�o � poss�vel transferir valor negativo");
+			throw new ArithmeticException("Operacao invalida - nao eh possivel transferir valor negativo");
 		}
 		if (valorTransferencia > this.getSaldo()) {
-			throw new ArithmeticException("Opera��o inv�lida - saldo insuficiente para a transfer�ncia solicitada");
+			throw new ArithmeticException("Operacao invalida - saldo insuficiente para a transferencia solicitada");
 		}
 
-		// this.setSaldo(this.getSaldo()-valorTransferencia);
-		// contaDestino.setSaldo(contaDestino.getSaldo()+valorTransferencia);
+		//this.setSaldo(this.getSaldo()-valorTransferencia);
+		//contaDestino.setSaldo(contaDestino.getSaldo()+valorTransferencia);
 
 		this.sacarValor(valorTransferencia);
-		contaDestino.depositarValor(valorTransferencia);
+		contaDestino.depositarValor(valorComDesconto);
 	}
 
 }
