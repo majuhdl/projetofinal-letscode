@@ -26,6 +26,8 @@ public class Aplicacao {
 		System.out.println("Saldo:"+conta3.getSaldo()+"\nNome cliente:"+conta3.getDonoConta().getNome());
 
 		ContaInvestimento conta4 = new ContaInvestimento(0, cliente1);
+		conta3.transferir(conta4, 13.50);
+		System.out.println("Saldo:"+conta3.getSaldo()+"\nNome cliente:"+conta3.getDonoConta().getNome());
 		System.out.println("Saldo:"+conta4.getSaldo()+"\nNome cliente:"+conta4.getDonoConta().getNome());
 
 		ContaInvestimento conta5 = new ContaInvestimento(0, cliente2);
